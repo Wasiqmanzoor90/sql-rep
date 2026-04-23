@@ -270,3 +270,61 @@ order by salary
 
 select top 3 * from employ
 order by salary
+
+
+alter table employ
+add gender varchar(5)
+
+
+update employ
+set gender = 'M'
+where empid = 111
+
+use mydb
+select * from employ
+
+/*Aggegerate functions
+count    returns number of rows
+sum      returns the sum
+avg      returns the average value
+max      returns the maximum value
+min      returns the minimum value
+*/
+
+
+select COUNT(*) from employ
+
+select COUNT(*) from employ
+where salary =100000
+
+select COUNT(*) from employ
+where salary >100000
+
+
+select COUNT(distinct department) from employ
+
+select COUNT(*) from employ
+where gender = 'M'
+
+
+select sum(salary) from employ
+
+select sum(salary) from employ
+where gender = 'F'
+
+
+select avg(salary) from employ
+
+select AVG(salary) from employ
+where gender = 'M' 
+
+select sum(salary) from employ
+where adress = 'Banglore'
+
+select avg(salary) from employ
+where adress = 'Banglore'
+
+
+select MAX(salary) from employ
+
+select mi
