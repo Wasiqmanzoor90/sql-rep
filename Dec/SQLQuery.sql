@@ -324,7 +324,7 @@ where adress = 'Banglore'
 select avg(salary) from employ
 where adress = 'Banglore'
 
-
+use mydb
 select MAX(salary) from employ
 
-select mi
+select min(salary) from employ
