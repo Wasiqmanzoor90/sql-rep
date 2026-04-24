@@ -328,3 +328,39 @@ use mydb
 select MAX(salary) from employ
 
 select min(salary) from employ
+
+use mydb
+
+select * from employ
+
+---Group By--
+--group by is a clause that organize rows with same values into groups---
+select department, COUNT(*) from employ
+group by department
+
+select adress, COUNT(*) from employ
+group by adress
+
+select department ,COUNT(*) AS no_employ from employ
+group by department 
+
+select department ,COUNT(*) AS no_employ from employ
+group by department 
+order by no_employ desc
+
+select department, COUNT(*)AS no_employ from employ
+group by department
+having COUNT(*)>2
+
+select department, MAX(salary) as highest_salary from employ
+group by department
+
+
+select adress, AVG(salary) as avg_salary from employ
+group by adress
+
+
+select department, MAX(salary) as highest_salary from employ
+group by department
+order by highest_salary desc
+
