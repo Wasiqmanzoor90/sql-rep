@@ -364,3 +364,41 @@ select department, MAX(salary) as highest_salary from employ
 group by department
 order by highest_salary desc
 
+use mydb
+
+select * from employ
+--Cities having average salary more than 100000
+select adress, AVG(salary) as avg_salary from employ
+group by adress
+having AVG(salary)>100000
+
+--Department having average female salary more than 30000
+select department, AVG(salary) as avg_salary from employ
+where gender = 'F'
+group by department
+having AVG(salary)>30000
+
+
+--employ having salary betwenn 50000 to 100000
+
+select name, avg(salary) as employ_salary from employ
+group by name
+having avg(salary) >=50000 and AVG(salary)<=100000
+
+
+--employ having salary betwenn 50000 to 100000
+select name, avg(salary) from employ
+group by name
+having avg(salary) between 50000 and 100000
+
+
+
+
+/*
+select 
+where
+Group by
+having
+order by
+top
+*/
