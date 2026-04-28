@@ -402,3 +402,81 @@ having
 order by
 top
 */
+
+
+--joins--
+
+/*
+inner join
+left join
+right join 
+outer join
+*/
+
+use mydb
+
+
+
+
+create table department
+(
+DepartmentId int Primary Key,
+DepartmentName varchar(50) not null,
+DepartmentLocation varchar(30) not null
+)
+
+
+
+create table employ
+(
+empid int primary key,
+empname varchar(30) not null,
+gender varchar(10) not null,
+
+DepartmentId int,
+foreign key(DepartmentId) References department(DepartmentId)
+)
+
+
+select * from employ
+select * from department
+insert into department values(1,'HR','Mumbai'),(2,'IT','Mumbai'),(3,'Sales','Banglore')
+
+
+
+
+
+
+
+
+insert into employ values(101,'Moonis','M',2),
+(102,'Abrar','M',2),
+(103,'Ayaz','M',3),
+(104,'Ahmad','M',3),
+(105,'Madeeha','F',1),
+(106,'Zaira','F',1),
+(107,'Emaam','F',1),
+(108,'Ubaid','M',2),
+(109,'Shoib','M',3),
+(110,'Tufail','M',2)
+insert into employ values
+(111,'Muskan','F',Null),
+(1112,'Emaam','F',Null),
+(114,'Shoib','M',Null)
+(115,'Tufail','',2)
+select * from employ
+
+select * from employ
+
+--inner join
+--only matching columns in both tables
+select e.empname, e.gender, d.DepartmentName from employ e
+inner join department d
+on e.DepartmentId = d.DepartmentId
+
+--left join
+--use when we want all employes even if they dont belong to any department
+select * from employ
+select e.empname,d.DepartmentName from employ e
+left join department d
+on e.DepartmentId = d.DepartmentId
