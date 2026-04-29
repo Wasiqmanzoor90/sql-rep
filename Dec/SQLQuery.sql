@@ -440,7 +440,8 @@ foreign key(DepartmentId) References department(DepartmentId)
 
 select * from employ
 select * from department
-insert into department values(1,'HR','Mumbai'),(2,'IT','Mumbai'),(3,'Sales','Banglore')
+insert into department values
+(4,'Marketing','LA'),(5,'House-Keeping','Banglore')
 
 
 
@@ -464,6 +465,7 @@ insert into employ values
 (1112,'Emaam','F',Null),
 (114,'Shoib','M',Null)
 (115,'Tufail','',2)
+use mydb
 select * from employ
 
 select * from employ
@@ -480,3 +482,21 @@ select * from employ
 select e.empname,d.DepartmentName from employ e
 left join department d
 on e.DepartmentId = d.DepartmentId
+
+--Right Join 
+--Use when we want all deparments if there were no enrolment
+select e.empname,d.DepartmentName from employ e
+right join department d
+on e.DepartmentId = d.DepartmentId
+
+
+--Full join(Everthing from both sides)
+
+select e.empname,d.DepartmentName from employ e
+left join department d
+on e.DepartmentId = d.DepartmentId
+union
+select e.empname,d.DepartmentName from employ e
+right join department d
+on e.DepartmentId = d.DepartmentId
+
