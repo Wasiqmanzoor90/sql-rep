@@ -500,3 +500,120 @@ select e.empname,d.DepartmentName from employ e
 right join department d
 on e.DepartmentId = d.DepartmentId
 
+
+
+
+
+
+
+
+
+CREATE TABLE Department (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(50) NOT NULL UNIQUE
+)
+
+CREATE TABLE Employee (
+    EmpID INT PRIMARY KEY,
+    EmpName VARCHAR(100) NOT NULL,
+    Age INT CHECK (Age >= 18),
+    Salary DECIMAL(10,2) CHECK (Salary > 0),
+    DeptID INT
+    foreign key(DeptID) References Department(DeptID)
+    )
+
+    INSERT INTO Department (DeptID, DeptName) VALUES
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Finance'),
+(4, 'Marketing'),
+(5, 'Operations');
+
+    INSERT INTO Employee (EmpID, EmpName, Age, Salary, DeptID) VALUES
+(1, 'Amit Sharma', 28, 45000, 2),
+(2, 'Priya Singh', 32, 55000, 1),
+(3, 'Rahul Verma', 26, 40000, 2),
+(4, 'Neha Kapoor', 30, 60000, 3),
+(5, 'Arjun Mehta', 35, 75000, 4),
+(6, 'Sneha Reddy', 29, 48000, 5),
+(7, 'Vikas Gupta', 40, 82000, 3),
+(8, 'Pooja Nair', 27, 42000, 1),
+(9, 'Karan Malhotra', 31, 67000, 2),
+(10, 'Anjali Desai', 33, 72000, 4),
+(11, 'Rohit Jain', 25, 39000, 5),
+(12, 'Meera Iyer', 36, 88000, 3),
+(13, 'Suresh Patel', 45, 95000, 5),
+(14, 'Kavita Joshi', 29, 51000, 1),
+(15, 'Deepak Yadav', 34, 68000, 2)
+
+use mydb
+select * from Department
+select * from Employee
+
+
+--Subqueries
+--in simple words a sub query is a query with in a query(nested query)
+
+--Employes earning more than average salary
+select EmpName , Salary
+from Employee
+where Salary > (select AVG(Salary) from Employee)
+
+--Highest Salary
+select * from Employee
+where Salary=(select MAX(Salary) from Employee)
+
+
+--Minimum salary
+select * from Employee
+where Salary=(select MIN(Salary) from Employee)
+
+--employ in same department as amit
+select * from Employee
+where DeptID=(
+select DeptID from Employee
+where EmpName = 'Amit Sharma'
+)
+
+--Get department name of Priya singh
+select DeptName from 
+Department
+where DeptID = (
+select DeptID from
+Employee 
+where EmpName = 'Priya Singh'
+)
+
+--Employes work in It Department
+select * from
+Employee
+where DeptID=(
+select DeptID from Department
+where DeptName = 'IT'
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
