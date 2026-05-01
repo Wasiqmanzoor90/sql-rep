@@ -591,16 +591,36 @@ where DeptID=(
 select DeptID from Department
 where DeptName = 'IT'
 )
+select * from Employee
+
+--employes earning less than average salary
+select EmpName, Salary from Employee
+where Salary<(select AVG(Salary) from Employee)
 
 
+--second highest salary
+select MAX(Salary) as secondhighest from Employee
+where Salary<(select MAX(Salary) from Employee)
+
+select * from Department
 
 
+--Employes who are not in IT Department
+select * from Employee
+where DeptID!=
+(
+select DeptID from Department
+where DeptName = 'IT'
 
+)
 
-
-
-
-
+--Highest salary in each department
+select * from Employee e
+where Salary =(
+select max(Salary) from 
+Employee
+where DeptID = e.DeptID
+)
 
 
 
