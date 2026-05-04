@@ -624,16 +624,67 @@ where DeptID = e.DeptID
 
 
 
+--Transaction--
+--Transaction is the commonds that are used to manage transaction in database
+--these are used to manage the changes that are made by DML Staments
+
+use mydb
+drop table student
+
+Create table student
+(
+StdId int,
+Name varchar(30),
+Class varchar(20)
+)
+
+select * from student
+--commit is used to permanatly save any transaction in database
+--rollback is commond that restores the database to the last commit state
+
+--transation1 (commit)
+begin transaction
+insert into student values(1,'wasiq','11th')
+commit
+select * from student
 
 
 
+--transaction2(rollback)
+
+begin transaction
+insert into student values(2,'umer','7th')
+select * from student
+rollback
 
 
+select * from student
 
 
+create table account(
+accountId int,
+HolderName varchar(30),
+balance int
+)
+
+insert into account values(1,'wasiq','1000'),(2,'Madeeha',3200)
 
 
+select * from account
 
+--Any error in this transaction it will rollback everthing in previous state or we can say to last commit
+begin transaction
+begin try
 
+update account set balance = balance-300 where accountId = 4 
+--
+--
+--
+--x
+update account set balance =  balance+300 where accountId = 3
 
-
+commit
+end try
+begin catch
+rollback
+end catch
