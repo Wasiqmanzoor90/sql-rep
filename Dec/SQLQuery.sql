@@ -688,3 +688,79 @@ end try
 begin catch
 rollback
 end catch
+
+
+
+use mydb
+--Stored Procedure
+--A stored procedure is sql commond or query that is prepared for collection of one or more sql statments saved in database for reuse
+--Basically it's like encapsulation
+
+create procedure getemployes
+as
+begin
+select * from Employee
+end
+
+
+getemployes
+
+--stored procedure with paramaetres
+create procedure getemolybyid
+@id int
+as
+begin
+select * from Employee
+where EmpID = @id
+end
+
+getemolybyid @id=5
+
+
+
+
+--find employ by name
+create procedure getemploybyname
+@name varchar(30)
+as
+begin
+select * from Employee
+where EmpName = @name
+end
+
+getemploybyname @name = 'Vikas Gupta'
+
+--here we make change in existing procedure
+alter procedure getemployes
+
+as
+begin
+select * from Employee
+where Age>30
+end
+
+getemployes
+
+drop procedure getemolybyid
+
+
+select * from Employee
+
+
+
+create procedure inserdata
+@id int,
+@name varchar(30),
+@age int,
+@sal int,
+@depid int
+as
+begin
+insert into Employee(EmpID,EmpName,Age,Salary,DeptID)
+values(@id,@name,@age,@sal,@depid)
+end
+
+select * from Employee
+where EmpID = 101
+
+inserdata @id = 101,@name='wasiq',@age=25,@sal = 100000, @depid=2
