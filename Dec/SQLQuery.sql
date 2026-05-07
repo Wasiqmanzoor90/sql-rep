@@ -764,3 +764,31 @@ select * from Employee
 where EmpID = 101
 
 inserdata @id = 101,@name='wasiq',@age=25,@sal = 100000, @depid=2
+
+--views
+--in sql server view is visual representation of data based on the sql query it does not effect any data in table
+create view EmployView as
+select EmpId, EmpName, Salary
+from Employee
+where Salary >50000
+
+
+Create View SenorityView as
+
+Select EmpName from Employee
+where Age>30
+
+drop view EmployView
+
+select * from SenorityView
+
+
+
+
+
+
+
+
+
+Select * from EmployView
+
