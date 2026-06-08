@@ -47,7 +47,8 @@ Create table student
 (
 roll_no int,
 Name varchar(20),
-Section varchar(10)
+Section varchar(10),
+
 )
 
 truncate table student   --Here truncate only delete data not table 
@@ -78,21 +79,35 @@ select * from student
 
 
 
+use mydb
+
+
+select * from student
 
 
 
+insert into student(roll_no,Name,Section,class)
+values(3,'Reeb','C','11th'),
+(4,'Jasira','D','12th'),
+(5,'Alim','A','7th'),
+(6,'Aina','D','11th')
 
 
 
+--Clause in sql means to filter data ,order data etc it use es some keywords that are as follow
+--From
+--Where
+--order by
+--Having
+select * from student
+
+update  student
+set Name ='Reeba'
+where roll_no = 3
 
 
 
+delete from student
+where roll_no=1
 
 
-
-
-
-
-
-
-select * from employ
