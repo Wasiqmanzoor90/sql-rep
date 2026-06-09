@@ -111,3 +111,54 @@ delete from student
 where roll_no=1
 
 
+
+
+
+
+
+
+
+/* 
+
+constraints are rule that are applied to table
+
+1. Primary key ---   uniquely identifies each row in table
+2. Not Null  ---- Null values are not allowed
+3. Unique   ---- Duplicate values are not allowed in table
+4. Default   --Pre- Defined 
+5. Forign Key --- establish relation between two table
+6. Check  --- to apply condition
+*/
+
+
+use mydb
+
+create table employe
+(
+empid int primary key,
+Name Varchar(30) not null,
+Adress Varchar(40) default 'Mumbai',
+Salary int
+)
+
+insert into employe(empid,Name,Adress,Salary)
+values(104,'Banglore',70000),
+
+
+
+
+select * from employe
+
+
+
+
+
+
+
+
+
+
+
+
+
+
