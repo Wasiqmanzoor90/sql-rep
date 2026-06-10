@@ -151,14 +151,34 @@ select * from employe
 
 
 
+use mydb
+
+select * from employe
+
+--Where--
+select * from employe
+where Adress = 'Banglore'
+
+select * from employe
+where Name = 'Sahil'
+
+
+select * from employe 
+where Salary > 50000
+
+select * from employe
+where Salary <50000
+
+
+select * from employe
+where empid = 100
 
 
 
+--Aggerate--
 
-
-
-
-
-
-
-
+select max(Salary) from employe
+select min(Salary) as minimimsalary from employe
+select sum(Salary) as Total_Salary from employe
+select avg(Salary) from employe
+select count(*) from employe
