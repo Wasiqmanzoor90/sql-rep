@@ -142,7 +142,9 @@ Salary int
 )
 
 insert into employe(empid,Name,Adress,Salary)
-values(104,'Banglore',70000),
+values
+(109,'Aqib', 'Mumbai',80000)
+
 
 
 
@@ -182,3 +184,59 @@ select min(Salary) as minimimsalary from employe
 select sum(Salary) as Total_Salary from employe
 select avg(Salary) from employe
 select count(*) from employe
+
+
+
+
+
+use mydb
+
+
+select * from employe
+
+
+
+select * from employe
+where Adress = 'Banglore' and Salary >70000
+
+
+
+select * from employe
+where Adress = 'Banglore' or Salary >70000
+
+
+select * from employe
+where Name like '%n'
+
+
+select * from employe
+where Name like 'r%'
+
+
+select * from employe
+where Salary between 50000 and 100000
+
+
+select Name, Salary from employe
+where empid = 101
+
+
+
+
+select * from employe
+order by Salary desc
+
+
+
+select * from employe
+order by Name desc
+
+
+select * from employe
+order by Name,Salary desc
+
+
+--Top return total number of rows
+
+select top 2 * from employe
+order by Salary desc
