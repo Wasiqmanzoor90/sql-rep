@@ -240,3 +240,37 @@ order by Name,Salary desc
 
 select top 2 * from employe
 order by Salary desc
+
+
+use mydb
+select * from employe
+
+select count(*) as Banglore_P from employe
+where Adress = 'Banglore'
+
+
+select avg(Salary) from employe
+where Adress = 'Banglore'
+
+
+select COUNT(*) from employe
+where Salary >50000
+
+
+
+select sum(Salary) from employe
+where Adress = 'Banglore'
+
+
+select AVG(salary) from employe
+
+select * from employe
+where Salary > 70000
+
+
+
+select max(Salary) from employe
+where Salary <(select max(Salary) from employe)
+
+
+
