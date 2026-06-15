@@ -274,3 +274,51 @@ where Salary <(select max(Salary) from employe)
 
 
 
+
+use mydb
+select * from employe
+
+alter table employe
+add Department varchar(30)
+
+
+update employe
+set Department = 'Finance'
+where empid =109
+
+--Group By--
+--Group by is a clause that organise rows with same value int groups
+select Adress,count(*) from employe
+group by Adress
+
+
+
+select Adress,count(*) as no_employ from employe
+group by Adress
+order by no_employ desc
+
+
+
+select Department, COUNT(*) as no_employ from employe
+group by Department 
+order  by no_employ desc
+
+
+
+select Department, COUNT(*) from employe
+group by Department
+having COUNT(*) > 3
+
+
+select Department, MAX(Salary) from employe
+group by Department
+
+
+
+select Adress, Min(Salary) from employe
+group by Adress
+
+
+select Department, AVG(Salary) as avg_salary from employe
+group by Department
+
