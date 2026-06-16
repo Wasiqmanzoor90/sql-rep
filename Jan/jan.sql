@@ -322,3 +322,95 @@ group by Adress
 select Department, AVG(Salary) as avg_salary from employe
 group by Department
 
+
+use mydb
+
+drop table employe
+drop table Department
+
+
+
+
+create table Department
+(
+DepartmentId Int Primary key,
+DepartmentName varchar(30),
+DepartmentLocation varchar(30)
+)
+
+
+create table employe
+(
+empid int primary key,
+empname varchar(30),
+salary int,
+age int check(age>18),
+DepartmentId int,
+foreign key(DepartmentId) references Department(DepartmentId)
+)
+
+
+
+select * from Department
+select * from employe
+
+
+insert into Department(DepartmentId,DepartmentName,DepartmentLocation)
+values(105,'HRM','Srinagar'),(102,'HR','Mumbai'),(103,'Marketing','Banglore')
+
+
+
+INSERT INTO employe (empid, empname, salary, age, DepartmentId) VALUES
+(1, 'John Doe', 75000, 28, 101),
+(2, 'Jane Smith', 82000, 34, 102),
+(3, 'Michael Brown', 61000, 22, 103),
+(4, 'Emily Davis', 95000, 41, 101),
+(5, 'David Wilson', 54000, 25, 104),
+(6, 'Sarah Martinez', 88000, 31, 102),
+(7, 'James Anderson', 72000, 29, 103),
+(8, 'Amanda Thomas', 67000, 27, 101),
+(9, 'Robert Jackson', 105000, 45, 104),
+(10, 'Lisa White', 59000, 23, 102),
+(11, 'William Harris', 83000, 36, 103),
+(12, 'Megan Martin', 91000, 38, 101),
+(13, 'Kevin Thompson', 64000, 26, 104),
+(14, 'Rachel Garcia', 76000, 30, 102),
+(15, 'Brian Martinez', 52000, 21, 103),
+(16, 'Christine Robinson', 110000, 48, 101),
+(17, 'Timothy Clark', 69000, 32, 104),
+(18, 'Laura Rodriguez', 80000, 33, 102),
+(19, 'Jason Lewis', 58000, 24, 103),
+(20, 'Stephanie Lee', 97000, 42, 101);
+
+insert into employe(empid, empname, salary, age)
+values(21,'wasiq',100000,35),(22,'Reeb',2000000,25),(23,'Adil',500000,25)
+
+
+
+
+
+
+select * from employe
+select * from Department
+
+
+
+--inner join retreives data from two diffrent tables on the basis of same column
+
+select e.empname, e.salary, d.DepartmentName  from employe e
+inner join Department d
+on e.DepartmentId = d.DepartmentId
+
+--Left join 
+--use when we want to get all employes that is from left side of table perhaps they doesnt have a department
+
+select e.empname , d.DepartmentName from employe e
+left join Department d
+on e.DepartmentId = d.DepartmentId
+
+
+--Right join
+--when we want to get data from the right side of table perhaps it meets condition or not
+select e.empname , d.DepartmentName from employe e
+right join Department d
+on e.DepartmentId = d.DepartmentId

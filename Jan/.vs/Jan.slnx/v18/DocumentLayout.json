@@ -1,12 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Dell\\Documents\\Project\\sql\\Jan\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dell\\Documents\\Project\\sql\\Jan\\jan.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jan.sql||{B5A506EB-11BE-4782-9A18-21265C2CA0B4}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "jan.sql - DESKTOP-2KQLPVS.master (DESKTOP-2KQLPVS\\Dell (82))",
+              "DocumentMoniker": "C:\\Users\\Dell\\Documents\\Project\\sql\\Jan\\jan.sql",
+              "RelativeDocumentMoniker": "jan.sql",
+              "ToolTip": "C:\\Users\\Dell\\Documents\\Project\\sql\\Jan\\jan.sql - DESKTOP-2KQLPVS.master (DESKTOP-2KQLPVS\\Dell (82))",
+              "RelativeToolTip": "jan.sql - DESKTOP-2KQLPVS.master (DESKTOP-2KQLPVS\\Dell (82))",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-16T10:12:23.065Z",
+              "EditorCaption": " - DESKTOP-2KQLPVS.master (DESKTOP-2KQLPVS\\Dell (82))"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
