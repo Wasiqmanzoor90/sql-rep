@@ -356,7 +356,7 @@ select * from employe
 
 
 insert into Department(DepartmentId,DepartmentName,DepartmentLocation)
-values(105,'HRM','Srinagar'),(102,'HR','Mumbai'),(103,'Marketing','Banglore')
+values(105,'Mechanical','Srinagar'),(102,'HR','Mumbai'),(103,'Marketing','Banglore')
 
 
 
@@ -411,6 +411,20 @@ on e.DepartmentId = d.DepartmentId
 
 --Right join
 --when we want to get data from the right side of table perhaps it meets condition or not
-select e.empname , d.DepartmentName from employe e
-right join Department d
+select e.empname , d.DepartmentName from employe e right join Department d
+on e.DepartmentId = d.DepartmentId
+use mydb
+
+select * from employe
+select * from Department
+
+
+
+select d.DepartmentName,e.empname from Department d right join employe e
+on e.DepartmentId = d.DepartmentId
+
+
+
+--full outer join returns all the rows from both side of the table
+select d.DepartmentName,e.empname from Department d full outer join employe e
 on e.DepartmentId = d.DepartmentId
