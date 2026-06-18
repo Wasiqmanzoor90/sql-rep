@@ -428,3 +428,59 @@ on e.DepartmentId = d.DepartmentId
 --full outer join returns all the rows from both side of the table
 select d.DepartmentName,e.empname from Department d full outer join employe e
 on e.DepartmentId = d.DepartmentId
+
+--sub query
+--sub query mean query within query or we can say nested query
+
+
+use mydb
+select AVG(salary) from employe
+
+--we wanr employes which less than average salary
+select empname , salary from employe
+where salary<(select AVG(salary) from employe)
+
+
+--second highest salary
+select MAX(salary) as second_highest from employe
+where salary<(select MAX(salary) from employe)
+
+
+--highest salary in each department
+select * from employe e
+where salary=(
+select MAX(salary) from employe
+where DepartmentId = e.DepartmentId
+
+)
+
+--employ from same department as emily davis
+
+select * from employe
+where DepartmentId=(
+select DepartmentId from employe
+where empname='Emily Davis'
+)
+
+
+--get  department name of emily davis
+select DepartmentName from Department
+where DepartmentId=(
+select DepartmentId from employe
+where empname = 'Emily Davis'
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
