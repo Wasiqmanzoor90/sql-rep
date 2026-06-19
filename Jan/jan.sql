@@ -471,7 +471,54 @@ where empname = 'Emily Davis'
 )
 
 
+use mydb
 
+select * from employe
+select * from Department
+
+
+--get department of jane smith
+select DepartmentName from Department
+where DepartmentId=(
+
+select DepartmentId from employe
+where empname  ='jane smith'
+
+)
+
+
+
+--Employes work i It department
+
+select * from employe
+where DepartmentId = (
+select DepartmentId from Department
+where DepartmentName ='IT'
+
+)
+
+--Department with no employ
+
+select DepartmentName from Department
+where DepartmentId Not in
+(
+select DepartmentId from employe
+)
+--employes located in diffrent cities
+select empname from employe
+where DepartmentId in
+(
+
+select DepartmentId from Department
+where DepartmentLocation = 'Mumbai'
+)
+
+--employes older than averge age
+select empname, age from employe
+where age >
+(
+select AVG(age) from employe
+)
 
 
 
