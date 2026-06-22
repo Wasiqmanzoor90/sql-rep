@@ -521,8 +521,50 @@ select AVG(age) from employe
 )
 
 
+use mydb
+
+--Trasaction is the commond that is used to managa changes in database its used with dml commonds
+
+--commit is uded to sava data in databse
+--rooback is commond that restores the database to last commit state 
 
 
+select * from student
+begin transaction
+insert into student (7,'Mary','D','3rd')
+commit
+select * from student
+
+
+
+
+
+create table account
+(
+
+accntid int,
+holdername varchar(30),
+balance int
+)
+
+insert into account values(1,'wasiq',1000),(2,'Maryam',5000)
+
+select * from account
+
+
+begin transaction
+ begin try
+
+update account set balance  = balance-1100 where accntid =1
+--/
+--/
+--/
+update account set balance  = balance+300 where accntid =1
+commit
+end try
+begin catch
+rollback
+end catch
 
 
 
