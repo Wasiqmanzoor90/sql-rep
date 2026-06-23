@@ -568,6 +568,63 @@ end catch
 
 
 
+--stored Procedure
+
+use mydb
+create procedure getemployes
+as
+begin
+select * from employe
+end
+
+
+getemployes
+
+
+--stored procedure
+--A stored procedure is sql comond or query that is prepared for collection of one or more sql statement in database for resuse
+--it's like a encapsulation
+
+
+create procedure getemploybyid
+@id int
+as
+begin
+select * from employe
+where empid = @id
+end
+
+getemploybyid @id = 1
+
+
+
+create procedure getemploybyname
+@name varchar(20)
+as
+begin
+select * from employe 
+where empname = @name
+end
+
+getemploybyname @name = 'Reeb'
+
+
+
+--here we update the existing procedure
+alter procedure getemployes
+as
+begin
+select * from employe
+where age >25
+end
+
+
+getemployes
+
+--Here we delete the procedure
+drop procedure getemploybyid
+
+
 
 
 
