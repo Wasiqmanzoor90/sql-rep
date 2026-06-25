@@ -627,6 +627,37 @@ drop procedure getemploybyid
 
 
 
+use mydb
+
+
+select * from employe
+where salary >30000
+
+--view
+--in sql server view is commond that is used to see data visulaization without effecting the databse
+
+create view employsalar as
+select empid, empname , salary
+from employe 
+where salary >30000
 
 
 
+
+select * from employsalar
+
+select * from employe
+
+
+
+create view senioremployview as
+
+select empname from employe
+where age > 30
+
+
+select * from senioremployview
+
+
+
+drop view senioremployview
