@@ -661,3 +661,74 @@ select * from senioremployview
 
 
 drop view senioremployview
+
+
+use mydb
+
+
+--TRIGGERS--
+--Triggers is a databse object that automatically get executed in response
+--it deals with 
+--insert
+--update
+--delete
+
+create trigger trg_insert
+on employe
+after insert
+as
+begin
+print('Your data inserted sucessfully')
+end
+
+select * from employe
+insert into employe(empid, empname,salary,age,DepartmentId)
+values(44,'Aqib',12000,19,101)
+
+
+
+
+create trigger trg_delete
+on employe
+after delete
+as
+begin
+print('You deleted a row sucessfully!')
+end
+
+
+
+delete from employe
+where empid=44
+
+
+
+create trigger trg_update
+on employe
+after update
+as
+begin
+print('Your updated row successfully')
+end
+
+
+update employe
+set empname = 'aqib'
+where empid = 2
+
+
+
+
+--index
+--clustered index
+--non clustered
+
+exec sp_helpindex 'employe'
+
+
+create Nonclustered index idx_name
+on employe(empname)
+
+drop index idx_name on employe
+
+'wasiq'
