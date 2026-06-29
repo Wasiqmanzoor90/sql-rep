@@ -731,4 +731,29 @@ on employe(empname)
 
 drop index idx_name on employe
 
-'wasiq'
+use mydb
+
+
+
+--windows function allows tou to perform speacific task across set of rows(called a window) related to current row without collapsing the result into a single 
+--row likw grouby do
+
+--we want average salary of every employ in the table
+--OVER to look over
+select empname, salary,
+avg(salary) over() as avg_salary
+from employe
+
+
+
+
+--Ranks of employes on the basis of salary
+
+select empname , salary,
+rank() over(order by  salary desc) as rank_salary
+from employe
+
+--Average salary per department
+select empname, salary, DepartmentId,
+AVG(salary) over(partition by DepartmentId) as avg_salary
+from employe
