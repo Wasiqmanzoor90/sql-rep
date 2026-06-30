@@ -757,3 +757,33 @@ from employe
 select empname, salary, DepartmentId,
 AVG(salary) over(partition by DepartmentId) as avg_salary
 from employe
+
+
+
+
+use mydb
+drop table student
+--Date Time
+
+create table student
+(
+std_id int primary key,
+name varchar(50),
+course varchar(40),
+created_at datetime
+
+)
+
+insert into student(std_id, name, course, created_at)
+values(1, 'Ayaan' ,'BCA',GETDATE())
+
+select * from student
+
+
+
+select * from World_Population
+
+
+select count(*) as total_rows
+from World_Population
+
