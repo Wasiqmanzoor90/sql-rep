@@ -273,8 +273,6 @@ select max(Salary) from employe
 where Salary <(select max(Salary) from employe)
 
 
-
-
 use mydb
 select * from employe
 
@@ -404,8 +402,7 @@ on e.DepartmentId = d.DepartmentId
 --Left join 
 --use when we want to get all employes that is from left side of table perhaps they doesnt have a department
 
-select e.empname , d.DepartmentName from employe e
-left join Department d
+select e.empname , d.DepartmentName from employe e left join Department d
 on e.DepartmentId = d.DepartmentId
 
 
@@ -786,4 +783,121 @@ select * from World_Population
 
 select count(*) as total_rows
 from World_Population
+
+
+
+
+use mydb
+
+
+select * from netflix_titles
+
+--1-show latest rewalese year
+
+select title, release_year
+from netflix_titles
+where release_year=(
+select MAX(release_year) from netflix_titles
+)
+
+--2--old movies
+select title, release_year
+from netflix_titles
+where release_year=(
+select Min(release_year) from netflix_titles
+)
+
+--3
+select title, country from netflix_titles
+where country = (
+select top 1  country
+where country = 'india'
+)
+
+
+--4.rating with tv shows
+
+select title, rating from netflix_titles
+where rating in(
+select rating from netflix_titles
+where type = 'TV Show'
+
+)
+
+
+
+select AVG(release_year) from netflix_titles
+
+--5. want greater than averge realse year
+select title  from netflix_titles
+where release_year >(
+select AVG(release_year) from netflix_titles
+)
+
+ -- 6.movies with longest duration
+
+ select title, duration from netflix_titles
+ where duration = (
+ select max(duration) from netflix_titles
+ )
+
+ --7
+ select director from netflix_titles
+ where director in(
+ select director from netflix_titles
+ group by director
+ having count(*)>10
+ )
+
+
+ --8 getting countries which have more than 5 movies
+ select title, country from netflix_titles
+ where country in (
+  select country from netflix_titles
+ group by country
+ having count(*)>5
+ )
+
+ use mydb
+
+ select * from Department
+ select * from employe
+
+
+ --get employes with their deparments
+ select e.empname, d.DepartmentName
+ from employe e join Department d
+ on d.DepartmentId = e.DepartmentId
+
+
+ --show full employ detail with department location
+ select e.*, d.DepartmentLocation from employe e join	Department d
+ on 
+ e.DepartmentId = d.DepartmentId
+
+ --count employe in each department
+
+ select d.DepartmentName, count(e.empid) as total from Department d left join employe e
+ on 
+ d.DepartmentId = e.DepartmentId
+ group by DepartmentName
+
+ --show all department (even with no employ)
+
+ select d.DepartmentName, e.empname from Department d left join employe e
+ on 
+ d.DepartmentId = e.DepartmentId
+
+
+ select d.DepartmentName, e.empname from Department d right join employe e
+ on 
+ d.DepartmentId = e.DepartmentId
+
+
+
+ --get employes with (IT) department
+ select d.DepartmentName, e.empname from Department d join employe e
+ on 
+ e.DepartmentId = d.DepartmentId
+ where DepartmentName = 'it'
 
