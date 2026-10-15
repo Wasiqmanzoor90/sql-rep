@@ -183,3 +183,100 @@ where name like 'a%'
 select * from employ
 where name like '%q'
 
+
+
+
+use mydb1
+
+select * from employ
+
+alter table employ
+drop constraint UQ__employ__A9D105348CC7BC5C
+
+alter table employ
+drop column email
+
+INSERT INTO employ (empid, name, age, adress, salary)
+VALUES
+(1, 'Aamir', 25, 'Srinagar', 30000),
+(2, 'Rahul', 28, 'Jammu', 35000),
+(3, 'Zoya', 24, 'Anantnag', 28000),
+(4, 'Aman', 30, 'Delhi', 45000),
+(5, 'Sara', 26, 'Srinagar', 32000),
+(6, 'Bilal', 29, 'Baramulla', 40000),
+(7, 'Priya', 23, 'Mumbai', 25000),
+(8, 'Adil', 32, 'Pulwama', 50000),
+(9, 'Neha', 27, 'Chandigarh', 38000),
+(10, 'Irfan', 31, 'Srinagar', 42000),
+(11, 'Rohan', 22, 'Jammu', 22000),
+(12, 'Ayesha', 25, 'Anantnag', 31000),
+(13, 'Sameer', 35, 'Delhi', 60000),
+(14, 'Pooja', 28, 'Mumbai', 39000),
+(15, 'Danish', 26, 'Srinagar', 33000),
+(16, 'Karan', 33, 'Jammu', 48000),
+(17, 'Mehak', 24, 'Baramulla', 27000),
+(18, 'Yasir', 29, 'Pulwama', 41000),
+(19, 'Anjali', 27, 'Delhi', 36000),
+(20, 'Farhan', 34, 'Srinagar', 55000)
+
+
+truncate table employ
+
+select * from employ
+
+
+
+select count(*) from employ
+where adress = 'Srinagar'
+
+
+select count(*) from employ
+where salary <50000
+
+
+select sum(salary) from employ
+where adress = 'Srinagar'
+
+
+
+--Group by--
+
+--group by is a clause that organizes row with same value into groups
+select adress, count(*) from employ
+group by adress
+
+
+select adress, COUNT(*) as no_employ from employ
+group by adress
+order by no_employ desc
+
+
+select adress, max(salary) from employ
+group by adress
+
+
+
+select adress , avg(salary)from employ
+group by adress
+
+select adress, COUNT(*) from employ
+group by adress
+having COUNT(*)>3
+
+select adress, AVG(salary) from employ
+group by adress
+having avg(salary)>30000
+
+
+select adress, sum(salary) from employ
+group by adress
+having sum(salary) >50000
+
+
+select adress, avg(age) from employ
+group by adress
+having AVG(age)>25
+
+
+
+select * from employ
