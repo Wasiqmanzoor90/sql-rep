@@ -239,44 +239,155 @@ where adress = 'Srinagar'
 
 
 
---Group by--
-
---group by is a clause that organizes row with same value into groups
-select adress, count(*) from employ
-group by adress
-
-
-select adress, COUNT(*) as no_employ from employ
-group by adress
-order by no_employ desc
-
-
-select adress, max(salary) from employ
-group by adress
 
 
 
-select adress , avg(salary)from employ
-group by adress
 
-select adress, COUNT(*) from employ
-group by adress
-having COUNT(*)>3
-
-select adress, AVG(salary) from employ
-group by adress
-having avg(salary)>30000
+use mydb2
 
 
-select adress, sum(salary) from employ
-group by adress
-having sum(salary) >50000
+drop table employ
+drop table departmet
+create table department
+(
+
+deptid int primary key,
+deptname  varchar(30),
+deptlocation varchar(40)
+)
 
 
-select adress, avg(age) from employ
-group by adress
-having AVG(age)>25
+create table employ
+(
+empid int primary key,
+name varchar(30),
+salary int,
+age int,
+deptid int,
+foreign key(deptid) references department(deptid)
+)
+
+
+insert into department(deptid,deptname,deptlocation)
+values(100,'HR','BLR'),(101,'CS','BLR'),(102,'Sales','SXR')
+
+
+
+
+
+
+INSERT INTO employ (empid, name, salary, age, deptid)
+VALUES
+(1, 'Rahul', 35000, 25, 100),
+(2, 'Priya', 42000, 28, 101),
+(3, 'Amit', 30000, 24, 102),
+(4, 'Sneha', 45000, 29, 100),
+(5, 'Vikas', 38000, 27, 101),
+(6, 'Neha', 32000, 23, 102),
+(7, 'Rohit', 50000, 32, 100),
+(8, 'Anjali', 41000, 26, 101),
+(9, 'Karan', 36000, 25, 102),
+(10, 'Pooja', 47000, 30, 100),
+(11, 'Arjun', 39000, 28, 101),
+(12, 'Meena', 34000, 24, 102),
+(13, 'Sahil', 52000, 33, 100),
+(14, 'Kavita', 44000, 29, 101),
+(15, 'Deepak', 31000, 22, 102),
+(16, 'Riya', 48000, 31, 100),
+(17, 'Manish', 37000, 26, 101),
+(18, 'Simran', 33000, 23, 102),
+(19, 'Nikhil', 55000, 35, 100),
+(20, 'Divya', 43000, 28, 101),
+(21, 'Varun', 40000, 27, 102),
+(22, 'Isha', 46000, 30, 100),
+(23, 'Mohit', 35000, 25, 101),
+(24, 'Ayesha', 32000, 24, 102),
+(25, 'Rakesh', 60000, 36, 100),
+(26, 'Tanya', 49000, 31, 101),
+(27, 'Akash', 38000, 26, 102),
+(28, 'Nisha', 53000, 34, 100),
+(29, 'Suresh', 41000, 29, 101),
+(30, 'Komal', 36000, 25, 102)
 
 
 
 select * from employ
+
+select * from department
+
+--sub query 
+
+
+select max(salary) from employ
+
+select avg(salary) from employ
+
+
+
+--second largest salary
+
+select max(salary) as secondL from employ
+
+--employes which earn less than average salary
+
+select name, salary from employ
+where salary<(select AVG(salary) from employ)
+
+--department name of rahul
+
+select deptname from department
+where deptid=(
+select deptid from employ
+where name = 'Rahul'
+)
+
+
+---higest salary in each department
+
+select * from employ e
+where salary=(
+
+select max(salary) from employ
+where deptid = e.deptid
+)
+
+
+--employes from same department as rahul
+
+
+select * from employ
+where deptid =(
+select deptid from employ
+where name = 'Rahul'
+)
+
+
+
+--employes older than average age
+
+select avg(age) from employ
+
+
+select name , age from employ
+where age>(
+
+select AVG(age) from employ
+)
+
+
+--employes location
+
+select name from employ
+where deptid in
+(
+select deptid from department
+where deptlocation = 'SXR'
+
+)
+
+
+
+--50 questions sub query
+
+
+
