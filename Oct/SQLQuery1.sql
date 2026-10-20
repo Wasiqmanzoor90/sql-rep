@@ -278,6 +278,7 @@ values(100,'HR','BLR'),(101,'CS','BLR'),(102,'Sales','SXR')
 
 INSERT INTO employ (empid, name, salary, age, deptid)
 VALUES
+
 (1, 'Rahul', 35000, 25, 100),
 (2, 'Priya', 42000, 28, 101),
 (3, 'Amit', 30000, 24, 102),
@@ -389,5 +390,26 @@ where deptlocation = 'SXR'
 
 --50 questions sub query
 
+select * from employ
+select * from department
+
+--inner join both the condition should be true
+select e.name , d.deptname from employ e join department d
+on e.deptid = d.deptid
 
 
+--left join
+--use when we want to get all employes detail thath is from left side of table perhaps they doesnt have department
+select e.name, e.age, d.deptname from employ e left join department d
+on e.deptid = d.deptid
+
+
+--right join
+--use when we want to get all departments detail thath is from right side of table perhaps they doesnt have an employ
+select e.name, e.age, d.deptname from employ e right join department d
+on e.deptid = d.deptid
+
+--full outer join
+
+select e.name, e.age, d.deptname from employ e full outer join department d
+on e.deptid = d.deptid
