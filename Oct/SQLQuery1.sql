@@ -413,3 +413,56 @@ on e.deptid = d.deptid
 
 select e.name, e.age, d.deptname from employ e full outer join department d
 on e.deptid = d.deptid
+
+
+
+use mydb1
+
+
+
+--CTE (Common table expression) is a view that dont get stored in databse
+
+use mydb2
+
+
+select e.name, e.salary, d.deptname from employ e join department d
+on e.deptid = d.deptid
+
+
+
+
+with alldet as
+(
+
+select e.name, e.salary, d.deptname from employ e join department d
+on e.deptid = d.deptid
+
+)
+select * from alldet
+
+
+
+--view is a virtual that get stored in your database it maintains code re usabilty
+
+
+create view alldet as
+(
+
+select e.name, e.salary, d.deptname from employ e join department d
+on e.deptid = d.deptid
+
+
+)
+
+
+alter view alldet as
+(
+
+select e.name, e.salary, e.age,d.deptname from employ e join department d
+on e.deptid = d.deptid
+)
+
+
+drop view alldet
+
+select * from alldet
