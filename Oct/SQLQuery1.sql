@@ -431,14 +431,14 @@ on e.deptid = d.deptid
 
 
 
-with alldet as
+with det as
 (
 
 select e.name, e.salary, d.deptname from employ e join department d
 on e.deptid = d.deptid
 
 )
-select * from alldet
+select * from det
 
 
 
@@ -466,3 +466,47 @@ on e.deptid = d.deptid
 drop view alldet
 
 select * from alldet
+select * from employ
+
+update employ
+set salary = 50000
+where empid = 32
+use mydb2
+
+--WINDOWS FUNCTION
+/*
+The fundemental diffrence is that group by collapse your rows to provide high level summary
+while windows function preserves individual rows so you can view an individual detail alongside aggerated data
+*/
+
+--it gives here unique rank to each row
+--but based on a rule you give in over
+select *, ROW_NUMBER() over(order by salary desc) as rn
+from employ
+
+
+--rank() gives same rank if vales are same
+--but skipping the iteration
+
+select *, RANK() over(order by salary desc) as rk
+from employ
+
+
+--same rank , same value but doenst skip iteration
+select *, DENSE_RANK() over(order by salary) as dr
+from employ
+
+
+
+/*
+The PARTITION BY clause in SQL divides a query's result set into smaller groups
+(partitions) so that window functions can perform calculations independently within each group.
+*/
+
+with  wint as(
+select empid, name, salary, deptid,
+sum(salary) over(partition by deptid) as totalsal,
+AVG(salary) over(partition by deptid) as avegsal
+from employ
+)
+select * from wint
